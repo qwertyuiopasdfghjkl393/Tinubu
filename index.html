@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presidential Loan Signup - Bola Ahmed Tinubu</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .header {
+      background-color: #008753;
+      color: white;
+      padding: 20px;
+    }
+
+    .arms {
+      width: 100px;
+    }
+
+    .president-section {
+      margin-top: 20px;
+      background-color: white;
+      padding: 20px;
+    }
+
+    .president-img {
+      width: 200px;
+      border-radius: 10px;
+    }
+
+    .form-section {
+      background-color: #ffffff;
+      margin: 20px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input {
+      width: 80%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #008753;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #006f41;
+    }
+
+    .disclaimer {
+      font-size: 14px;
+      margin-top: 10px;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="nigeria-coat-of-arms.png" alt="Nigeria Coat of Arms" class="arms">
+    <h1>Federal Republic of Nigeria</h1>
+    <h2>Presidential Empowerment Loan</h2>
+    <p>Pay ₦1,000 and get ₦50,000 – Sponsored by His Excellency Bola Ahmed Tinubu</p>
+  </div>
+
+  <div class="president-section">
+    <img src="bola-tinubu.jpg" alt="President Bola Ahmed Tinubu" class="president-img">
+    <h3>His Excellency Bola Ahmed Tinubu</h3>
+    <p>President, Federal Republic of Nigeria</p>
+  </div>
+
+  <div class="form-section">
+    <h2>Free Signup Now</h2>
+    <form id="loanForm">
+      <input type="text" placeholder="Full Name" required><br>
+      <input type="email" placeholder="Email Address" required><br>
+      <input type="tel" placeholder="Phone Number" required><br>
+      <button type="submit">Apply for ₦50,000</button>
+    </form>
+    <p class="disclaimer">* You only pay ₦1,000. You are not returning the ₦50,000.</p>
+  </div>
+
+  <script>
+    document.getElementById("loanForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      window.location.href = "home.html"; // Redirects to home.html
+    });
+  </script>
+</body>
+</html>

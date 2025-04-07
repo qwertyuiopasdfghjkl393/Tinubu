@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdraw Funds</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #008753;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: 600;
+      display: block;
+      margin: 15px 0 5px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #008753;
+      color: white;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00663d;
+    }
+    .success {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+      padding: 15px;
+      margin-top: 20px;
+      border: 2px solid #4caf50;
+      border-radius: 6px;
+    }
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 15px;
+      margin-top: 20px;
+      border: 2px solid #f5c6cb;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Withdraw Funds</h2>
+    <form id="withdrawForm">
+      <label for="amount">Amount to Withdraw</label>
+      <input type="number" id="amount" required>
+
+      <label for="bank">Select Bank</label>
+      <select id="bank" required>
+        <option value="">-- Select Your Bank --</option>
+        <option>Access Bank</option>
+        <option>GTBank</option>
+        <option>First Bank</option>
+        <option>UBA</option>
+        <option>Zenith Bank</option>
+        <option>Polaris Bank</option>
+        <option>FCMB</option>
+        <option>Fidelity Bank</option>
+        <option>Union Bank</option>
+        <option>Stanbic IBTC</option>
+        <option>Keystone Bank</option>
+        <option>Wema Bank</option>
+        <option>Heritage Bank</option>
+        <option>Unity Bank</option>
+        <option>Opay</option>
+        <option>Palmpay</option>
+        <option>Kuda</option>
+        <option>Moniepoint</option>
+        <option>Rubies Bank</option>
+        <option>Carbon</option>
+      </select>
+
+      <label for="account">Account Number</label>
+      <input type="text" id="account" maxlength="10" required>
+
+      <label for="state">State of Residence</label>
+      <select id="state" required>
+        <option value="">-- Select State --</option>
+        <option>Abia</option>
+        <option>Adamawa</option>
+        <option>Akwa Ibom</option>
+        <option>Anambra</option>
+        <option>Bauchi</option>
+        <option>Bayelsa</option>
+        <option>Benue</option>
+        <option>Borno</option>
+        <option>Cross River</option>
+        <option>Delta</option>
+        <option>Ebonyi</option>
+        <option>Edo</option>
+        <option>Ekiti</option>
+        <option>Enugu</option>
+        <option>Gombe</option>
+        <option>Imo</option>
+        <option>Jigawa</option>
+        <option>Kaduna</option>
+        <option>Kano</option>
+        <option>Katsina</option>
+        <option>Kebbi</option>
+        <option>Kogi</option>
+        <option>Kwara</option>
+        <option>Lagos</option>
+        <option>Nasarawa</option>
+        <option>Niger</option>
+        <option>Ogun</option>
+        <option>Ondo</option>
+        <option>Osun</option>
+        <option>Oyo</option>
+        <option>Plateau</option>
+        <option>Rivers</option>
+        <option>Sokoto</option>
+        <option>Taraba</option>
+        <option>Yobe</option>
+        <option>Zamfara</option>
+        <option>FCT</option>
+      </select>
+
+      <button type="submit">Withdraw</button>
+    </form>
+
+    <div class="success" id="successBox" style="display: none">
+     
+    </div>
+    <div class="error" id="errorBox" style="display: none">
+      You must have at least ₦50,000 in your account to withdraw.
+    </div>
+  </div>
+
+  <script>
+    const accountInput = document.getElementById('account');
+    const accountName = document.getElementById('accountName');
+    const amountInput = document.getElementById('amount'); // The input for the amount
+
+    const userAccountBalance = 50000;  // Simulating user's account balance as ₦50,000
+
+    accountInput.addEventListener('input', () => {
+      if (accountInput.value.length === 10) {
+        accountName.value = ""; // Simulated name fetch
+      } else {
+        accountName.value = "";
+      }
+    });
+
+    document.getElementById('withdrawForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const withdrawalAmount = parseFloat(amountInput.value);
+
+      // Hide previous error or success messages
+      document.getElementById('successBox').style.display = 'none';
+      document.getElementById('errorBox').style.display = 'none';
+
+      // Check if the withdrawal amount exceeds user's available balance
+      if (withdrawalAmount > userAccountBalance) {
+        document.getElementById('errorBox').style.display = 'block';
+        return;  // Prevent form submission
+      }
+
+      // If the amount is valid, show success message
+      document.getElementById('successBox').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('successBox').style.display = 'none';
+      }, 3000);  // Hide success message after 3 seconds
+
+      this.reset();
+      accountName.value = "";
+    });
+  </script>
+</body>
+</html>
